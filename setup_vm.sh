@@ -10,6 +10,9 @@ swapon /swapfile
 wget -nv -O - https://get.docker.com/ | sh
 
 apt-get update
-apt-get install -y build-essential git
+apt-get install -y \
+  build-essential \
+  git \
+  ruby2.7
 
 
