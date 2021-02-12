@@ -1,4 +1,5 @@
 TERRAFORM := terraform-0.14.5
+SSH_KEY := ~/.ssh/digitalocean_buildvm
 
 foo:
 	curl -X GET \
@@ -14,3 +15,13 @@ plan:
 
 apply:
 	$(TERRAFORM) apply
+
+fmt:
+	$(TERRAFORM) fmt -recursive
+
+destroy:
+	$(TERRAFORM) destroy
+
+ssh:
+	IP=$$($(TERRAFORM) output droplet_ip | sed 's/"//g'); ssh -A -i $(SSH_KEY) root@$$IP
+
