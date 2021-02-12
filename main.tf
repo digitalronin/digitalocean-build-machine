@@ -25,12 +25,13 @@ resource "digitalocean_ssh_key" "buildvm" {
 }
 
 resource "digitalocean_droplet" "buildvm" {
-  image              = "ubuntu-20-04-x64"
-  name               = "buildvm"
-  region             = "sgp1"
-  size               = "s-1vcpu-1gb"
-  monitoring         = true
-  ssh_keys           = [digitalocean_ssh_key.buildvm.fingerprint]
+  image      = "ubuntu-20-04-x64"
+  name       = "buildvm"
+  region     = "sgp1"
+  size       = "s-1vcpu-1gb"
+  monitoring = true
+  ssh_keys   = [digitalocean_ssh_key.buildvm.fingerprint]
+  user_data  = file("setup_vm.sh")
 }
 
 output "droplet_ip" {
