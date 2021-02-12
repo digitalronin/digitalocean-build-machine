@@ -1,0 +1,3 @@
+* set up my aliases/bin commands
+* install neovim with my setup
+* set git credentials
