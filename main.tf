@@ -9,12 +9,14 @@ terraform {
   }
 }
 
-provider "digitalocean" {
-  token = var.do_token
-}
+variable "do_token" {}
 
 variable "public_key_file" {
   default = "~/.ssh/digitalocean_buildvm.pub"
+}
+
+provider "digitalocean" {
+  token = var.do_token
 }
 
 resource "digitalocean_ssh_key" "buildvm" {
