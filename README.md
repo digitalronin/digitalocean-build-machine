@@ -21,4 +21,5 @@ Now you should be able to checkout git repos and build docker images.
 
 ## TODO
 
+* Moar automation (set up the user non-interactively - maybe ansible?)
 * git config is not setup correctly
