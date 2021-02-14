@@ -11,11 +11,22 @@
 
 * `make scp`
 * `make ssh-david`
-* `./david.sh`
+* `./david.sh` # Only needed once per VM
+* `tmux`
+
+Now you should be able to checkout git repos and build docker images.
+
+### Enable sudo
 
 To enable sudo, ssh as the root user and change the password for `david`
 
-Now you should be able to checkout git repos and build docker images.
+### Configure gh
+
+`gh auth login`
+
+Paste PAC and choose SSH protocol
+
+## Cleanup
 
 > Remember to `make destroy` when finished.
 
