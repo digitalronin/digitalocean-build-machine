@@ -26,6 +26,7 @@ fmt:
 	$(TERRAFORM) fmt -recursive
 
 destroy:
+	rm -f .ip
 	$(TERRAFORM) destroy
 
 ssh: .ip
