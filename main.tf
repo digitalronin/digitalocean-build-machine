@@ -20,7 +20,7 @@ provider "digitalocean" {
 }
 
 resource "digitalocean_ssh_key" "buildvm" {
-  name       = "MoJ Build VM"
+  name       = "Build VM"
   public_key = file(var.public_key_file)
 }
 
