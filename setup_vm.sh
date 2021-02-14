@@ -30,6 +30,8 @@ install_software() {
   for package in ${PACKAGES}; do
     apt-get install -y ${package}
   done
+
+  install_gh
 }
 
 create_users() {
@@ -39,6 +41,14 @@ create_users() {
   mkdir /home/${username}/.ssh
   cp /root/.ssh/authorized_keys /home/${username}/.ssh/
   chown -R ${username}:${username} /home/${username}/.ssh
+}
+
+# https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-apt
+install_gh() {
+  apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+  apt-add-repository https://cli.github.com/packages
+  apt update
+  apt install gh
 }
 
 main
