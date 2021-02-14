@@ -20,7 +20,7 @@ dotfiles() {
 
 configure_neovim() {
   # Neovim
-  mkdir ~/.config
+  mkdir ~/.config || true # .config may already exist
   cd ~/.config
   git clone git@github.com:digitalronin/neovim-config.git nvim
   mkdir -p nvim/tmp/backup nvim/tmp/swap nvim/tmp/undo
