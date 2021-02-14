@@ -22,4 +22,3 @@ Now you should be able to checkout git repos and build docker images.
 ## TODO
 
 * git config is not setup correctly
-* change tmux status line colour, or display hostname in prompt
