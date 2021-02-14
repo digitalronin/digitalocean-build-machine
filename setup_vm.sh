@@ -1,5 +1,13 @@
 #!/bin/bash
 
+PACKAGES="
+  build-essential
+  git
+  ruby2.7
+  tmux
+  neovim
+"
+
 main() {
   create_users
   apt-get update
@@ -19,12 +27,9 @@ install_software() {
   # install docker
   wget -nv -O - https://get.docker.com/ | sh
 
-  apt-get install -y \
-    build-essential \
-    git \
-    ruby2.7 \
-    tmux \
-    neovim
+  for package in ${PACKAGES}; do
+    apt-get install -y ${package}
+  done
 }
 
 create_users() {
