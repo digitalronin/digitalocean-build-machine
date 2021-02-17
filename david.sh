@@ -8,6 +8,7 @@ main() {
   dotfiles
   configure_neovim
   set_git_credentials
+  install_bundler
 }
 
 dotfiles() {
@@ -33,6 +34,10 @@ configure_neovim() {
 set_git_credentials() {
   git config --global user.email "david@digitalronin.com"
   git config --global user.name "David Salgado"
+}
+
+install_bundler() {
+  sudo gem install bundler # TODO: need to set passwd first
 }
 
 main
