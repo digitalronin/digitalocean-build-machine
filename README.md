@@ -34,4 +34,4 @@ Paste PAC and choose SSH protocol
 
 * Moar automation (set up the user non-interactively - maybe ansible?)
 * git config is not setup correctly
-* usermod -a -G docker david # as root - enable 'david' to run docker
+* usermod -a -G docker david # as root, then reboot - enable 'david' to run docker
