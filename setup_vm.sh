@@ -4,6 +4,7 @@ PACKAGES="
   build-essential
   git
   ruby2.7
+  ruby-dev
   tmux
   neovim
 "
