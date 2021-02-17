@@ -7,6 +7,7 @@ set -euo pipefail
 main() {
   dotfiles
   configure_neovim
+  set_git_credentials
 }
 
 dotfiles() {
@@ -25,6 +26,11 @@ configure_neovim() {
   git clone git@github.com:digitalronin/neovim-config.git nvim
   mkdir -p nvim/tmp/backup nvim/tmp/swap nvim/tmp/undo
   # TODO: non-interactively install plugins
+}
+
+set_git_credentials() {
+  git config --global user.email "david@digitalronin.com"
+  git config --global user.name "David Salgado"
 }
 
 main
