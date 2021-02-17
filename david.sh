@@ -28,6 +28,8 @@ configure_neovim() {
   # TODO: non-interactively install plugins
 }
 
+# TODO: fix dotfiles - there's a broken symlink ~/.gitconfig
+# which prevents this step from working
 set_git_credentials() {
   git config --global user.email "david@digitalronin.com"
   git config --global user.name "David Salgado"
