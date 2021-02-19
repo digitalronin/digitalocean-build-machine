@@ -5,7 +5,6 @@ sys_packages:
   - curl
   - neovim
   - git
-  - ufw
   - tmux
   - ruby2.7
   - ruby-dev

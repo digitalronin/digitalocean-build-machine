@@ -1,0 +1,21 @@
+- hosts: all
+  become: true
+  vars_files:
+    - vars/default.yml
+
+  tasks:
+    - name: Install UFW
+      apt:
+        name: ufw
+        state: latest
+
+    - name: UFW - Allow SSH connections
+      ufw:
+        rule: allow
+        name: OpenSSH
+
+    - name: UFW - Deny all other incoming traffic by default
+      ufw:
+        state: enabled
+        policy: deny
+        direction: incoming
