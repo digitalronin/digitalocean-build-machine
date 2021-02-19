@@ -43,6 +43,6 @@ TODO: create a local inventory file automatically, via terraform
 TODO: prevent the initial "are you sure you want to connect" step
 
 ```
-cd ansible-playbooks/setup_ubuntu2004/
+cd ansible-playbooks/
 make apply-playbook
 ```
