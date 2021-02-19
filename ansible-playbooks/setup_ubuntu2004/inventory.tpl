@@ -1,0 +1,2 @@
+[buildvm]
+${ip}

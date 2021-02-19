@@ -37,3 +37,8 @@ resource "digitalocean_droplet" "buildvm" {
 output "droplet_ip" {
   value = digitalocean_droplet.buildvm.ipv4_address
 }
+
+resource "local_file" "ansible-inventory" {
+  content = templatefile("${path.module}/ansible-playbooks/setup_ubuntu2004/inventory.tpl", { ip = digitalocean_droplet.buildvm.ipv4_address })
+  filename = "${path.module}/ansible-playbooks/setup_ubuntu2004/inventory"
+}
