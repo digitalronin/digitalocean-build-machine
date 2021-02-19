@@ -45,3 +45,12 @@
         state: present
         regexp: '^#?PermitRootLogin'
         line: 'PermitRootLogin prohibit-password'
+
+    - name: Update apt
+      apt:
+        update_cache: yes
+
+    - name: Install required system packages
+      apt:
+        name: "{{ sys_packages }}"
+        state: latest

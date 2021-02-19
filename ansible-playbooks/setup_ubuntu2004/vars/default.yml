@@ -1,2 +1,11 @@
 create_user: david
 copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/digitalocean_buildvm.pub') }}"  # TODO: supply keyfile via terraform
+sys_packages:
+  - build-essential
+  - curl
+  - neovim
+  - git
+  - ufw
+  - tmux
+  - ruby2.7
+  - ruby-dev
