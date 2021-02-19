@@ -31,7 +31,7 @@ resource "digitalocean_droplet" "buildvm" {
   size       = "s-1vcpu-1gb"
   monitoring = true
   ssh_keys   = [digitalocean_ssh_key.buildvm.fingerprint]
-  user_data  = file("setup_vm.sh")
+  # user_data  = file("setup_vm.sh")
 }
 
 output "droplet_ip" {
