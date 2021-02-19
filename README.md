@@ -42,6 +42,7 @@ TODO: figure out how to run playbooks from a parent directory
 TODO: create a local inventory file automatically, via terraform
 TODO: prevent the initial "are you sure you want to connect" step
 
-* Create `inventory` file `ansible-playbooks/setup_ubuntu2004/inventory`
-* `cd ansible-playbooks/setup_ubuntu2004/`
-* `ansible-playbook playbook.yml -i inventory -l buildvm -u root`
+```
+cd ansible-playbooks/setup_ubuntu2004/
+make apply-playbook
+```
