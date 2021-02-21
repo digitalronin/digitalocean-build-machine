@@ -1,0 +1,8 @@
+- set_fact: homedir="/home/{{ create_user }}"
+- set_fact: dotdir="{{ homedir }}/dotfiles"
+
+- name: Checkout dotfiles repo
+  shell: "ls {{ dotdir }} || git clone --depth 1 git@github.com:digitalronin/dotfiles.git {{ dotdir }}"
+
+- name: Install dotfiles
+  shell: "cd {{ dotdir }}; script/bootstrap --force"
