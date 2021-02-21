@@ -3,8 +3,9 @@ copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/digitalocean_bu
 sys_packages:
   - build-essential
   - curl
-  - neovim
   - git
-  - tmux
-  - ruby2.7
+  - jq
+  - neovim
   - ruby-dev
+  - ruby2.7
+  - tmux
