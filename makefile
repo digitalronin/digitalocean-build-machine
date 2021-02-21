@@ -20,16 +20,14 @@ plan:
 
 apply:
 	$(TERRAFORM) apply
-	make .ip
 
 fmt:
 	$(TERRAFORM) fmt -recursive
 
 destroy:
-	rm -f .ip
 	$(TERRAFORM) destroy
 
-ssh: .ip
+ssh:
 	ssh $(SSH_OPTIONS) root@$$(cat .ip)
 
 ssh-david:
