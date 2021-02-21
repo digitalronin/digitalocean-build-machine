@@ -1,2 +1,1 @@
 * set up my aliases/bin commands
-* set git credentials
