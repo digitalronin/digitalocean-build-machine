@@ -19,3 +19,6 @@
     - backup
     - swap
     - undo
+
+- name: Install plugins
+  run: nvim --headless +PlugInstall +qa
