@@ -40,6 +40,6 @@ Paste PAC and choose SSH protocol
 
 ## TODO
 
-* dotfiles
-* install neovim plugins non-interactively, so I don't have to do it myself when I launch nvim for the first time
+* install binfiles
+* install bundler
 
