@@ -1,0 +1,21 @@
+- set_fact: confdir="/home/{{ create_user }}/.config"
+- set_fact: nvimdir="{{ confdir }}/nvim"
+
+- name: Ensure .config exists
+  file:
+    path: "{{ confdir }}"
+    state: directory
+    mode: '0755'
+
+- name: Checkout config repo
+  shell: "ls {{ nvimdir }} || git clone git@github.com:digitalronin/neovim-config.git {{ nvimdir }}"
+
+- name: Create utility directories
+  file:
+    path: "{{ nvimdir }}/tmp/{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - backup
+    - swap
+    - undo

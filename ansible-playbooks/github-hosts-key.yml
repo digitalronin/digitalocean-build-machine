@@ -1,0 +1,5 @@
+- set_fact: known_hosts="/home/{{ create_user }}/.ssh/known_hosts"
+
+- name: Add github.com hosts key
+  become_user: "{{ create_user }}"
+  shell: "grep github.com {{ known_hosts }} || ssh-keyscan github.com >> {{ known_hosts }}"

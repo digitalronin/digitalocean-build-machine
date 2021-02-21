@@ -1,0 +1,9 @@
+- hosts: all
+  become: false
+  remote_user: "{{ create_user }}"
+  vars_files:
+    - vars/default.yml
+
+  tasks:
+    - import_tasks: github-hosts-key.yml
+    - import_tasks: neovim-configure.yml
