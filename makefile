@@ -3,6 +3,9 @@ SSH_KEY := ~/.ssh/digitalocean_buildvm
 SCP_OPTIONS := -i $(SSH_KEY) -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 SSH_OPTIONS := -A $(SCP_OPTIONS)
 
+buildvm:
+	. .env; make init; make apply; sleep 60; ./ansible.sh
+
 foo:
 	curl -X GET \
 		-H "Content-Type: application/json" \
