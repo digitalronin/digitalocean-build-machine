@@ -13,13 +13,8 @@
 
 Now you should be able to checkout git repos and build docker images.
 
-### Enable sudo
-
-To enable sudo, ssh as the root user and change the password for `david`
-
-### Configure gh
-
-`gh auth login`
+> This code is meant to build a new VM from scratch each time it is run. So,
+> it's not fully idempotent. Don't try and use it to maintain a long-lived VM.
 
 Paste PAC and choose SSH protocol
 
