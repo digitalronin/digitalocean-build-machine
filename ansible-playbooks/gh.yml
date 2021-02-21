@@ -25,10 +25,4 @@
 
   - set_fact: token="{{ lookup('env','GITHUB_TOKEN') }}"
 
-  - name: Authenticate to github.com
-    become_user: "{{ create_user }}"
-    shell:
-      cmd: echo {{ token }} | gh auth login --with-token
-      warn: no
-
   when: gh_installed.stdout == ""

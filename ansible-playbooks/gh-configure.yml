@@ -1,0 +1,9 @@
+- set_fact: token="{{ lookup('env','GITHUB_TOKEN') }}"
+
+- name: Set git protocol to SSH
+  command: gh config set git_protocol ssh
+
+- name: Authenticate to github.com
+  shell:
+    cmd: echo {{ token }} | gh auth login --with-token
+    warn: no
