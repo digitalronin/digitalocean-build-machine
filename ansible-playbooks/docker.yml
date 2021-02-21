@@ -1,21 +1,16 @@
-- name: Install docker
-  hosts: all
-  become: true
+- name: Check whether docker is already installed
+  shell: which docker
+  ignore_errors: yes
+  register: docker_installed
 
-  tasks:
-    - name: Check whether docker is already installed
-      shell: which docker
-      ignore_errors: yes
-      register: docker_installed
+- block:
+  - name: download install script
+    get_url:
+      url: https://get.docker.com
+      dest: /tmp/install_docker.sh
+      mode: 0775
 
-    - block:
-      - name: download install script
-        get_url:
-          url: https://get.docker.com
-          dest: /tmp/install_docker.sh
-          mode: 0775
+  - name: run install script
+    command: /tmp/install_docker.sh
 
-      - name: run install script
-        command: /tmp/install_docker.sh
-
-      when: docker_installed.stdout == ""
+  when: docker_installed.stdout == ""

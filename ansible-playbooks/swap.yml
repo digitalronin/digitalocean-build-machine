@@ -1,40 +1,35 @@
 # https://advishnuprasad.com/blog/2017/02/22/create-swap-using-ansible-in-ubuntu/
-- name: Create swap
-  hosts: all
-  become: true
+- name: Check whether swap is already enabled or not
+  shell: cat /etc/sysctl.conf
+  register: swap_enabled
 
-  tasks:
-    - name: Check whether swap is already enabled or not
-      shell: cat /etc/sysctl.conf
-      register: swap_enabled
+- block:
+  - name: create swap file
+    command: fallocate -l 2G /swapfile
 
-    - block:
-      - name: create swap file
-        command: fallocate -l 2G /swapfile
+  - name: change permission type
+    file: path=/swapfile mode=600 state=file
 
-      - name: change permission type
-        file: path=/swapfile mode=600 state=file
+  - name: setup swap
+    command: mkswap /swapfile
 
-      - name: setup swap
-        command: mkswap /swapfile
+  - name: create swap
+    command: swapon /swapfile
 
-      - name: create swap
-        command: swapon /swapfile
+  - name: Add to fstab
+    action: lineinfile dest=/etc/fstab regexp="swapfile" line="/swapfile none swap sw 0 0" state=present
 
-      - name: Add to fstab
-        action: lineinfile dest=/etc/fstab regexp="swapfile" line="/swapfile none swap sw 0 0" state=present
+  - name: start swap
+    command: swapon -a
 
-      - name: start swap
-        command: swapon -a
+  - name: set swapiness
+    sysctl:
+      name: vm.swappiness
+      value: "10"
 
-      - name: set swapiness
-        sysctl:
-          name: vm.swappiness
-          value: "10"
+  - name: set swapiness
+    sysctl:
+      name: vm.vfs_cache_pressure
+      value: "50"
 
-      - name: set swapiness
-        sysctl:
-          name: vm.vfs_cache_pressure
-          value: "50"
-
-      when: swap_enabled.stdout.find('swappiness') == -1
+  when: swap_enabled.stdout.find('swappiness') == -1

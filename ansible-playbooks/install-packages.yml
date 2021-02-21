@@ -1,23 +1,16 @@
 # https://github.com/do-community/ansible-playbooks/blob/master/setup_ubuntu1804/playbook.yml
+- name: Install Prerequisites
+  apt:
+    name: aptitude
+    update_cache: yes
+    state: latest
+    force_apt_get: yes
 
-- hosts: all
-  become: true
-  vars_files:
-    - vars/default.yml
+- name: Update apt
+  apt:
+    update_cache: yes
 
-  tasks:
-    - name: Install Prerequisites
-      apt:
-        name: aptitude
-        update_cache: yes
-        state: latest
-        force_apt_get: yes
-
-    - name: Update apt
-      apt:
-        update_cache: yes
-
-    - name: Install required system packages
-      apt:
-        name: "{{ sys_packages }}"
-        state: latest
+- name: Install required system packages
+  apt:
+    name: "{{ sys_packages }}"
+    state: latest

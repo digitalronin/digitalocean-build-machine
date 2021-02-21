@@ -1,0 +1,13 @@
+- hosts: all
+  become: true
+  vars_files:
+    - vars/default.yml
+
+  tasks:
+    - import_tasks: swap.yml
+    - import_tasks: install-packages.yml
+    - import_tasks: docker.yml
+    - import_tasks: gh.yml
+    - import_tasks: firewall.yml
+    - import_tasks: user.yml
+

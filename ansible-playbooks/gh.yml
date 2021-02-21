@@ -1,40 +1,34 @@
-- hosts: all
-  become: true
-  vars_files:
-    - vars/default.yml
+- name: Check whether gh is already installed
+  shell: which gh
+  ignore_errors: yes
+  register: gh_installed
 
-  tasks:
-    - name: Check whether gh is already installed
-      shell: which gh
-      ignore_errors: yes
-      register: gh_installed
+- block:
+  - name: Add gh repo apt key
+    apt_key:
+      keyserver: keyserver.ubuntu.com
+      id: C99B11DEB97541F0
 
-    - block:
-      - name: Add gh repo apt key
-        apt_key:
-          keyserver: keyserver.ubuntu.com
-          id: C99B11DEB97541F0
+  - name: Add gh apt repository
+    apt_repository:
+      repo: deb https://cli.github.com/packages focal main
+      state: present
 
-      - name: Add gh apt repository
-        apt_repository:
-          repo: deb https://cli.github.com/packages focal main
-          state: present
+  - name: Update apt
+    apt:
+      update_cache: yes
 
-      - name: Update apt
-        apt:
-          update_cache: yes
+  - name: Install gh
+    apt:
+      name: gh
+      state: latest
 
-      - name: Install gh
-        apt:
-          name: gh
-          state: latest
+  - set_fact: token="{{ lookup('env','GITHUB_TOKEN') }}"
 
-      - set_fact: token="{{ lookup('env','GITHUB_TOKEN') }}"
+  - name: Authenticate to github.com
+    become_user: "{{ create_user }}"
+    shell:
+      cmd: echo {{ token }} | gh auth login --with-token
+      warn: no
 
-      - name: Authenticate to github.com
-        become_user: "{{ create_user }}"
-        shell:
-          cmd: echo {{ token }} | gh auth login --with-token
-          warn: no
-
-      when: gh_installed.stdout == ""
+  when: gh_installed.stdout == ""
