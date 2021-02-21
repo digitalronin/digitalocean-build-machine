@@ -13,4 +13,7 @@
   - name: run install script
     command: /tmp/install_docker.sh
 
+  - name: Add user to docker group
+    command: "usermod -a -G docker {{ create_user }}"
+
   when: docker_installed.stdout == ""
