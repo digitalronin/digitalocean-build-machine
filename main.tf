@@ -11,8 +11,8 @@ terraform {
 
 variable "do_token" {}
 
-variable "public_key_file" {
-  default = "~/.ssh/digitalocean_buildvm.pub"
+variable "private_key_file" {
+  default = "~/.ssh/digitalocean_buildvm"
 }
 
 provider "digitalocean" {
@@ -21,7 +21,7 @@ provider "digitalocean" {
 
 resource "digitalocean_ssh_key" "buildvm" {
   name       = "Build VM"
-  public_key = file(var.public_key_file)
+  public_key = file("${var.private_key_file}.pub")
 }
 
 resource "digitalocean_droplet" "buildvm" {
