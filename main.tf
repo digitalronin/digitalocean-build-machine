@@ -39,12 +39,12 @@ output "droplet_ip" {
 }
 
 resource "local_file" "ip-address" {
-  content = digitalocean_droplet.buildvm.ipv4_address
+  content  = digitalocean_droplet.buildvm.ipv4_address
   filename = "${path.module}/.ip"
 }
 
 resource "local_file" "ansible-script" {
-  content = templatefile("${path.module}/ansible.sh.tpl", { ip = digitalocean_droplet.buildvm.ipv4_address, private_key_file = var.private_key_file })
+  content  = templatefile("${path.module}/ansible.sh.tpl", { ip = digitalocean_droplet.buildvm.ipv4_address, private_key_file = var.private_key_file })
   filename = "${path.module}/ansible.sh"
 }
 
