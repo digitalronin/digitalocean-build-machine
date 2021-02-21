@@ -9,9 +9,6 @@ foo:
 		-H "Authorization: Bearer $${TF_VAR_do_token}" \
 		"https://api.digitalocean.com/v2/images" | jq
 
-.ip:
-	echo $$($(TERRAFORM) output droplet_ip | sed 's/"//g') > .ip
-
 init:
 	$(TERRAFORM) init
 
