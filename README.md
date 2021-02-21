@@ -5,12 +5,9 @@
 * Create an API key on DigitalOcean
 * export it as per dot.env.example
 * `make apply`
-* `make ssh`
-
-## Set up user
-
-* `make scp`
+* `./ansible.sh`
 * `make ssh-david`
+
 * `./david.sh` # Only needed once per VM
 * `tmux`
 
@@ -32,17 +29,7 @@ Paste PAC and choose SSH protocol
 
 ## TODO
 
-* Moar automation (set up the user non-interactively - maybe ansible?)
 * git config is not setup correctly
 * usermod -a -G docker david # as root, then reboot - enable 'david' to run docker
+* install neovim plugins non-interactively, so I don't have to do it myself when I launch nvim for the first time
 
-## Ansible
-
-TODO: figure out how to run playbooks from a parent directory
-TODO: create a local inventory file automatically, via terraform
-TODO: prevent the initial "are you sure you want to connect" step
-
-```
-cd ansible-playbooks/
-make apply-playbook
-```
