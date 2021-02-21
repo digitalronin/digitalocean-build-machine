@@ -1,0 +1,32 @@
+- hosts: all
+  become: true
+  vars_files:
+    - vars/default.yml
+
+  tasks:
+    - name: Check whether gh is already installed
+      shell: which gh
+      ignore_errors: yes
+      register: gh_installed
+
+    - block:
+      - name: Add gh repo apt key
+        apt_key:
+          keyserver: keyserver.ubuntu.com
+          id: C99B11DEB97541F0
+
+      - name: Add gh apt repository
+        apt_repository:
+          repo: deb https://cli.github.com/packages focal main
+          state: present
+
+      - name: Update apt
+        apt:
+          update_cache: yes
+
+      - name: Install gh
+        apt:
+          name: gh
+          state: latest
+
+      when: gh_installed.stdout == ""
