@@ -16,7 +16,7 @@ plan:
 	$(TERRAFORM) plan
 
 apply:
-	$(TERRAFORM) apply
+	$(TERRAFORM) apply -auto-approve
 
 fmt:
 	$(TERRAFORM) fmt -recursive
