@@ -4,7 +4,7 @@ SCP_OPTIONS := -i $(SSH_KEY) -o UserKnownHostsFile=/dev/null -o StrictHostKeyChe
 SSH_OPTIONS := -A $(SCP_OPTIONS)
 
 buildvm:
-	. .env; make init; make apply; sleep 60; ./ansible.sh
+	. .env; make init; make apply; sleep 180; ./ansible.sh
 
 foo:
 	curl -X GET \
