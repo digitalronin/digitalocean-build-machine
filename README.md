@@ -40,6 +40,5 @@ Paste PAC and choose SSH protocol
 
 ## TODO
 
-* install binfiles
 * install bundler
 
