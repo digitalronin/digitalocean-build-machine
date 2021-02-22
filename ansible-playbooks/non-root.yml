@@ -9,3 +9,4 @@
     - import_tasks: github-hosts-key.yml
     - import_tasks: neovim-configure.yml
     - import_tasks: dotfiles.yml
+    - import_tasks: bin-scripts.yml

@@ -1,0 +1,5 @@
+- set_fact: homedir="/home/{{ create_user }}"
+- set_fact: bindir="{{ homedir }}/bin"
+
+- name: Checkout bin-scripts repo
+  shell: "ls {{ bindir }} || git clone --depth 1 git@github.com:digitalronin/bin-scripts.git {{ bindir }}"
