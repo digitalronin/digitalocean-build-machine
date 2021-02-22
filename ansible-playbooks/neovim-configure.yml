@@ -21,4 +21,4 @@
     - undo
 
 - name: Install plugins
-  run: nvim --headless +PlugInstall +qa
+  command: nvim --headless +PlugInstall +qa
