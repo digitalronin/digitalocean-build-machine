@@ -10,4 +10,4 @@
     - import_tasks: docker.yml
     - import_tasks: gh.yml
     - import_tasks: firewall.yml
-
+    - import_tasks: bundler.yml

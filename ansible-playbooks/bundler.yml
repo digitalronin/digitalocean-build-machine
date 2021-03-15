@@ -1,0 +1,9 @@
+- name: Check whether bundler is already installed
+  shell: which bundle
+  ignore_errors: yes
+  register: bundler_installed
+
+- block:
+  - name: Install bundler
+    command: "gem install bundler"
+  when: bundler_installed.stdout == ""

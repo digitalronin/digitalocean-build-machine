@@ -7,7 +7,6 @@ not fully idempotent. Don't try and use it to maintain a long-lived VM.
 
 * Terraform 0.14.5
 * Ansible 2.10.5
-* `ansible-galaxy collection install community.general` <-- only to install bundler
 * ssh-agent <-- to not have to push ssh keys to the VM
 * github PAC <-- to use `gh`
 * DigitalOcean account
@@ -26,8 +25,6 @@ not fully idempotent. Don't try and use it to maintain a long-lived VM.
 ```
 
 * `make ssh-david`
-
-* `./david.sh` # Only needed once per VM
 * `tmux`
 
 Now you should be able to checkout git repos and build docker images.
@@ -37,8 +34,3 @@ Paste PAC and choose SSH protocol
 ## Cleanup
 
 > Remember to `make destroy` when finished.
-
-## TODO
-
-* install bundler
-
