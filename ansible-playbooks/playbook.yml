@@ -12,3 +12,4 @@
     - import_tasks: firewall.yml
     - import_tasks: bundler.yml
     - import_tasks: kubectl.yml
+    - import_tasks: terraform.yml

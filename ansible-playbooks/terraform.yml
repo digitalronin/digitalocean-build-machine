@@ -1,0 +1,18 @@
+- name: Check whether terraform is already installed
+  shell: which terraform
+  ignore_errors: yes
+  register: terraform_installed
+
+- block:
+  - name: Download terraform
+    get_url:
+      url: https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip
+      dest: /tmp/terraform_0.14.7_linux_amd64.zip
+
+  - name: Unarchive a file that is already on the remote machine
+    ansible.builtin.unarchive:
+      src: /tmp/terraform_0.14.7_linux_amd64.zip
+      dest: /usr/local/bin
+      remote_src: yes
+
+  when: terraform_installed.stdout == ""
