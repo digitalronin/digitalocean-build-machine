@@ -1,0 +1,12 @@
+- name: Check whether kubectl is already installed
+  shell: which kubectl
+  ignore_errors: yes
+  register: kubectl_installed
+
+- block:
+  - name: Install kubectl
+    get_url:
+      url: https://storage.googleapis.com/kubernetes-release/release/v1.20.4/bin/linux/amd64/kubectl
+      dest: /usr/local/bin/kubectl
+      mode: 0775
+  when: kubectl_installed.stdout == ""

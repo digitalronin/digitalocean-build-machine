@@ -11,3 +11,4 @@
     - import_tasks: gh.yml
     - import_tasks: firewall.yml
     - import_tasks: bundler.yml
+    - import_tasks: kubectl.yml
