@@ -1,1 +1,0 @@
-* set up my aliases/bin commands
