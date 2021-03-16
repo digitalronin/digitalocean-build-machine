@@ -1,0 +1,7 @@
+- set_fact: token="{{ lookup('env','TF_VAR_do_token') }}"
+
+- name: Authenticate doctl
+  shell:
+    cmd: doctl auth init --access-token {{ token }}
+    warn: no
+

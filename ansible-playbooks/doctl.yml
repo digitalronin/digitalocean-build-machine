@@ -1,0 +1,15 @@
+- name: Check whether doctl is already installed
+  shell: which doctl
+  ignore_errors: yes
+  register: doctl_installed
+
+- block:
+
+  - name: Download and unpack doctl
+    ansible.builtin.unarchive:
+      src: https://github.com/digitalocean/doctl/releases/download/v1.57.0/doctl-1.57.0-linux-amd64.tar.gz
+      dest: /usr/local/bin
+      mode: 0775
+      remote_src: yes
+
+  when: doctl_installed.stdout == ""

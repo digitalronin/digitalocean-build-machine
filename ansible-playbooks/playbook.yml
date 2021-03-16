@@ -13,3 +13,4 @@
     - import_tasks: bundler.yml
     - import_tasks: kubectl.yml
     - import_tasks: terraform.yml
+    - import_tasks: doctl.yml

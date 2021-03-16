@@ -10,3 +10,4 @@
     - import_tasks: neovim-configure.yml
     - import_tasks: dotfiles.yml
     - import_tasks: bin-scripts.yml
+    - import_tasks: doctl-configure.yml
