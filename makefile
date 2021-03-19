@@ -25,7 +25,7 @@ fmt:
 	$(TERRAFORM) fmt -recursive
 
 destroy:
-	$(TERRAFORM) destroy
+	. .env; $(TERRAFORM) destroy
 
 ssh:
 	ssh $(SSH_OPTIONS) root@$$(cat .ip)
