@@ -8,6 +8,12 @@
     rule: allow
     name: OpenSSH
 
+# port 4000 for phoenix apps
+- ufw:
+    rule: allow
+    port: 4000
+    proto: tcp
+
 - name: UFW - Deny all other incoming traffic by default
   ufw:
     state: enabled

@@ -10,3 +10,4 @@ sys_packages:
   - ruby2.7
   - silversearcher-ag
   - tmux
+  - postgresql-client

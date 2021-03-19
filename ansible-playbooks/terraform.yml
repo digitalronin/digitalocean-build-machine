@@ -12,15 +12,11 @@
       state: directory
       mode: '0755'
 
-  - name: Download terraform
-    get_url:
-      url: https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip
-      dest: /tmp/terraform_0.14.7_linux_amd64.zip
-
-  - name: Unarchive a file that is already on the remote machine
+  - name: Download and unpack terraform
     ansible.builtin.unarchive:
-      src: /tmp/terraform_0.14.7_linux_amd64.zip
+      src: https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip
       dest: /usr/local/bin
+      mode: 0775
       remote_src: yes
 
   when: terraform_installed.stdout == ""
