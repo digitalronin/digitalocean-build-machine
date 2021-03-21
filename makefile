@@ -36,3 +36,5 @@ ssh-david:
 scp:
 	scp $(SCP_OPTIONS) david.sh david@$$(cat .ip):
 
+doctl-auth:
+	doctl auth init -t $$(echo $$TF_VAR_do_token)
