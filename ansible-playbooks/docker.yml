@@ -8,7 +8,7 @@
     get_url:
       url: https://get.docker.com
       dest: /tmp/install_docker.sh
-      mode: 0775
+      mode: 0755
 
   - name: run install script
     command: /tmp/install_docker.sh
