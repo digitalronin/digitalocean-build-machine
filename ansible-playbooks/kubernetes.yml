@@ -35,3 +35,16 @@
       mode: 0755
   when: authenticator_installed.stdout == ""
 
+- name: Check whether helm is already installed
+  shell: which helm
+  ignore_errors: yes
+  register: helm_installed
+- block:
+  - name: Download installer
+    get_url:
+      url: https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+      dest: /tmp/get_helm.sh
+      mode: 0755
+  - name: run install script
+    command: /tmp/get_helm.sh
+  when: helm_installed.stdout == ""
