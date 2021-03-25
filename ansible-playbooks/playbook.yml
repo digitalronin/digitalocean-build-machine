@@ -10,7 +10,7 @@
     - import_tasks: docker.yml
     - import_tasks: gh.yml
     - import_tasks: firewall.yml
-    - import_tasks: bundler.yml
+    - import_tasks: ruby.yml
     - import_tasks: kubernetes.yml
     - import_tasks: terraform.yml
     - import_tasks: doctl.yml
