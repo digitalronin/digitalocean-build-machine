@@ -9,7 +9,7 @@
     ansible.builtin.unarchive:
       src: https://github.com/digitalocean/doctl/releases/download/v1.57.0/doctl-1.57.0-linux-amd64.tar.gz
       dest: /usr/local/bin
-      mode: 0775
+      mode: 0755
       remote_src: yes
 
   when: doctl_installed.stdout == ""
