@@ -27,3 +27,16 @@
       mode: 0775
       remote_src: yes
   when: eksctl_installed.stdout == ""
+
+- name: Check whether aws-iam-authenticator is already installed
+  shell: which aws-iam-authenticator
+  ignore_errors: yes
+  register: authenticator_installed
+- block:
+  - name: Download authenticator
+    get_url:
+      url: https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/aws-iam-authenticator
+      dest: /usr/local/bin/aws-iam-authenticator
+      mode: 0755
+  when: authenticator_installed.stdout == ""
+
