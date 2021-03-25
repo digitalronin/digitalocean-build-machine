@@ -12,5 +12,18 @@
       remote_src: yes
   - name: run install script
     command: /tmp/aws/install
-
   when: aws_installed.stdout == ""
+
+- name: Check whether eksctl is already installed
+  shell: which eksctl
+  ignore_errors: yes
+  register: eksctl_installed
+
+- block:
+  - name: Download and unpack installer
+    ansible.builtin.unarchive:
+      src: https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_linux_amd64.tar.gz
+      dest: /usr/local/bin
+      mode: 0775
+      remote_src: yes
+  when: eksctl_installed.stdout == ""
