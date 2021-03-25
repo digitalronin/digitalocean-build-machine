@@ -1,0 +1,16 @@
+- name: Check whether aws is already installed
+  shell: which aws
+  ignore_errors: yes
+  register: aws_installed
+
+- block:
+  - name: Download and unpack installer
+    ansible.builtin.unarchive:
+      src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+      dest: /tmp
+      mode: 0775
+      remote_src: yes
+  - name: run install script
+    command: /tmp/aws/install
+
+  when: aws_installed.stdout == ""

@@ -14,3 +14,4 @@
     - import_tasks: kubectl.yml
     - import_tasks: terraform.yml
     - import_tasks: doctl.yml
+    - import_tasks: aws.yml
