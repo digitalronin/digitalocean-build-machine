@@ -6,8 +6,6 @@ sys_packages:
   - git
   - jq
   - neovim
-  - ruby-dev
-  - ruby2.7
   - silversearcher-ag
   - tmux
   - postgresql-client
