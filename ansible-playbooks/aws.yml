@@ -20,7 +20,7 @@
   register: eksctl_installed
 
 - block:
-  - name: Download and unpack installer
+  - name: Download and unpack eksctl
     ansible.builtin.unarchive:
       src: https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_linux_amd64.tar.gz
       dest: /usr/local/bin
