@@ -2,7 +2,6 @@
   shell: which kubectl
   ignore_errors: yes
   register: kubectl_installed
-
 - block:
   - name: Install kubectl
     get_url:
@@ -10,3 +9,29 @@
       dest: /usr/local/bin/kubectl
       mode: 0755
   when: kubectl_installed.stdout == ""
+
+- name: Check whether eksctl is already installed
+  shell: which eksctl
+  ignore_errors: yes
+  register: eksctl_installed
+- block:
+  - name: Download and unpack eksctl
+    ansible.builtin.unarchive:
+      src: https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_linux_amd64.tar.gz
+      dest: /usr/local/bin
+      mode: 0755
+      remote_src: yes
+  when: eksctl_installed.stdout == ""
+
+- name: Check whether aws-iam-authenticator is already installed
+  shell: which aws-iam-authenticator
+  ignore_errors: yes
+  register: authenticator_installed
+- block:
+  - name: Download authenticator
+    get_url:
+      url: https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/aws-iam-authenticator
+      dest: /usr/local/bin/aws-iam-authenticator
+      mode: 0755
+  when: authenticator_installed.stdout == ""
+
