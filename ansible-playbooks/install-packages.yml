@@ -6,11 +6,22 @@
     state: latest
     force_apt_get: yes
 
+# Install a newer version of git than ubuntu 20.4's 2.25
+- name: Add git stable repository from PPA and install its signing key on Ubuntu target
+  ansible.builtin.apt_repository:
+    repo: ppa:git-core/ppa
+
 - name: Update apt
   apt:
     update_cache: yes
+
+- name: Install git
+  apt:
+    name: git
+    state: latest
 
 - name: Install required system packages
   apt:
     name: "{{ sys_packages }}"
     state: latest
+

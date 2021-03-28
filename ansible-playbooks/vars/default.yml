@@ -3,7 +3,6 @@ copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/digitalocean_bu
 sys_packages:
   - build-essential
   - curl
-  - git
   - jq
   - neovim
   - silversearcher-ag
