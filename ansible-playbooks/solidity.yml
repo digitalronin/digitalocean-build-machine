@@ -1,0 +1,14 @@
+- name: Install node
+  apt:
+    update_cache: yes
+    pkg:
+    - nodejs
+    - npm
+
+- name: Install solidity development tools
+  npm:
+    name: "{{ item }}"
+    global: yes
+  loop:
+    - truffle
+    - ganache-cli

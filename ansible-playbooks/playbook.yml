@@ -16,3 +16,4 @@
     - import_tasks: doctl.yml
     - import_tasks: aws.yml
     - import_tasks: javascript.yml
+    - import_tasks: solidity.yml
