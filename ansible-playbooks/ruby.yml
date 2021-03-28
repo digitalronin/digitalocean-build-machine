@@ -1,5 +1,6 @@
 - name: Install ruby
   apt:
+    update_cache: yes
     pkg:
     - ruby2.7
     - ruby-dev
