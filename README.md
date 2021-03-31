@@ -19,10 +19,7 @@ not fully idempotent. Don't try and use it to maintain a long-lived VM.
 * Set user information in `ansible-playbooks/vars/default.yml`
 * `make buildvm`
 
-> need a pause between terraform and ansible, or you get this error:
-```
-"E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 2308 (apt-get)", "E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?"
-```
+### Start working on the VM
 
 * `make ssh-david`
 * `tmux`

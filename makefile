@@ -3,6 +3,10 @@ SSH_KEY := ~/.ssh/digitalocean_buildvm
 SCP_OPTIONS := -i $(SSH_KEY) -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 SSH_OPTIONS := -A $(SCP_OPTIONS)
 
+# > You need a pause between terraform and ansible, or you get this error:
+# ```
+# "E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 2308 (apt-get)", "E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?"
+# ```
 buildvm:
 	. .env; make init; make apply; sleep 180; ./ansible.sh
 
