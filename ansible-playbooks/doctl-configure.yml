@@ -1,7 +1,14 @@
 - set_fact: token="{{ lookup('env','TF_VAR_do_token') }}"
 
-- name: Authenticate doctl
-  shell:
-    cmd: doctl auth init --access-token {{ token }}
-    warn: no
+- name: Check whether doctl is installed
+  shell: which doctl
+  ignore_errors: yes
+  register: doctl_installed
+
+- block:
+  - name: Authenticate doctl
+    shell:
+      cmd: doctl auth init --access-token {{ token }}
+      warn: no
+  when: doctl_installed.stdout != ""
 
