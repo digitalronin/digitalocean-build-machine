@@ -8,14 +8,20 @@
     rule: allow
     name: OpenSSH
 
+# No need for this - just open ports as needed - left here for reference
 # port 4000 for phoenix apps
-- ufw:
-    rule: allow
-    port: "4000"
-    proto: tcp
+# - ufw:
+#     rule: allow
+#     port: "4000"
+#     proto: tcp
 
 - name: UFW - Deny all other incoming traffic by default
   ufw:
     state: enabled
     policy: deny
     direction: incoming
+
+# You can open a port on the buildvm by running:
+#
+#     sudo ufw allow [PORT]
+#
