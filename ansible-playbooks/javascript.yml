@@ -4,3 +4,9 @@
     pkg:
     - nodejs
     - npm
+
+# apt-get install yarn installs a very old version
+- name: Install yarn
+  npm:
+    name: yarn
+    global: yes
