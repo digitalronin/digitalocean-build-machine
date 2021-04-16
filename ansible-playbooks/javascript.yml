@@ -5,8 +5,11 @@
     - nodejs
     - npm
 
-# apt-get install yarn installs a very old version
-- name: Install yarn
+- name: Install some useful npm packages
   npm:
-    name: yarn
+    name: "{{ item }}"
     global: yes
+  loop:
+    - yarn # apt-get install yarn installs a very old version
+    - http-server
+    - create-react-app
