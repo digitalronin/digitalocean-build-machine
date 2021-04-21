@@ -15,11 +15,6 @@
   apt:
     update_cache: yes
 
-- name: Install git
-  apt:
-    name: git
-    state: latest
-
 - name: Install required system packages
   apt:
     name: "{{ sys_packages }}"
