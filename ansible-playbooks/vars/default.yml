@@ -10,3 +10,4 @@ sys_packages:
   - silversearcher-ag
   - tmux
   - postgresql-client
+  - unzip
