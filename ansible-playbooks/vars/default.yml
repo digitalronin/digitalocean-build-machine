@@ -11,3 +11,4 @@ sys_packages:
   - tmux
   - postgresql-client
   - unzip
+  - ruby2.7
