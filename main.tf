@@ -1,10 +1,10 @@
 terraform {
-  required_version = ">= 0.14.5, < 0.15"
+  required_version = ">= 1.1, < 1.2"
 
   required_providers {
     digitalocean = {
       source  = "digitalocean/digitalocean"
-      version = "~> 2.4"
+      version = "~> 2.18"
     }
   }
 }
@@ -28,9 +28,9 @@ resource "digitalocean_droplet" "buildvm" {
   image      = "ubuntu-20-04-x64"
   name       = "buildvm"
   region     = "sgp1"
-  # size     = "s-1vcpu-1gb" # minimum - $5/month
+  size     = "s-1vcpu-1gb" # minimum - $5/month
   # size     = "s-2vcpu-2gb" # $15/month
-  size       = "s-4vcpu-8gb" # $40/month, $0.06/hour
+  # size       = "s-4vcpu-8gb" # $40/month, $0.06/hour
   monitoring = true
   ssh_keys   = [digitalocean_ssh_key.buildvm.fingerprint]
 }
