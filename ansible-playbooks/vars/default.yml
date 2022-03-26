@@ -6,7 +6,6 @@ sys_packages:
   - net-tools
   - curl
   - jq
-  - neovim
   - silversearcher-ag
   - tmux
   - postgresql-client

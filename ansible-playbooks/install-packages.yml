@@ -15,3 +15,13 @@
     name: "{{ sys_packages }}"
     state: latest
 
+- name: Check whether nvim is already installed
+  shell: which nvim
+  ignore_errors: yes
+  register: nvim_installed
+
+- block:
+  - name: Install neovim
+    shell: curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && chmod +x nvim.appimage && mv nvim.appimage /usr/bin/nvim
+  when: nvim_installed.stdout == ""
+
