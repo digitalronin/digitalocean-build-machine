@@ -1,3 +1,7 @@
+- name: Install nodesource PPA
+  shell: |
+    curl -sL https://deb.nodesource.com/setup_16.x | bash
+
 - name: Install node
   apt:
     update_cache: yes
