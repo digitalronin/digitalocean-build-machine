@@ -8,11 +8,7 @@ SSH_OPTIONS := -A $(SCP_OPTIONS)
 # "E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 2308 (apt-get)", "E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?"
 # ```
 buildvm:
-	source .env; \
-		make init; \
-		make apply; \
-		sleep 60; \
-		./ansible.sh
+	bash -c ". .env; make init; make apply; sleep 60; ./ansible.sh"
 
 list-do-images:
 	curl -X GET \
