@@ -31,10 +31,10 @@ fmt:
 destroy:
 	bash -c ". .env; $(TERRAFORM) destroy"
 
-ssh:
+ssh-root:
 	ssh $(SSH_OPTIONS) root@$$(cat .ip)
 
-ssh-david:
+ssh:
 	ssh $(SSH_OPTIONS) david@$$(cat .ip)
 
 scp:
