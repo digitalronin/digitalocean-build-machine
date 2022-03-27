@@ -23,13 +23,13 @@ plan:
 	$(TERRAFORM) plan
 
 apply:
-	$(TERRAFORM) apply -auto-approve
+	bash -c ". .env; $(TERRAFORM) apply -auto-approve"
 
 fmt:
 	$(TERRAFORM) fmt -recursive
 
 destroy:
-	. .env; $(TERRAFORM) destroy
+	bash -c ". .env; $(TERRAFORM) destroy"
 
 ssh:
 	ssh $(SSH_OPTIONS) root@$$(cat .ip)
