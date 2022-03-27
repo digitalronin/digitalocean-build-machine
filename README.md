@@ -17,6 +17,8 @@ not fully idempotent. Don't try and use it to maintain a long-lived VM.
 * Create a PAC on GitHub
 * export them as per dot.env.example
 * Set user information in `ansible-playbooks/vars/default.yml`
+* Edit `main.tf` to set the size of VM to create
+* Customise the software to install in `ansible-playbooks/playbook.yml`
 * `make buildvm`
 
 ### Start working on the VM
@@ -31,3 +33,8 @@ Paste PAC and choose SSH protocol
 ## Cleanup
 
 > Remember to `make destroy` when finished.
+
+## TODO
+
+- Add brownie for solidity development
+- Add a list of projects, along with code to clone them and install any required dependencies (e.g. yarn/npm packages). The initialisation code should be in the actual projects, as `make setup` or something.
