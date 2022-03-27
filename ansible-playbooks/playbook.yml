@@ -7,13 +7,13 @@
     - import_tasks: swap.yml
     - import_tasks: install-packages.yml
     - import_tasks: user.yml
-    - import_tasks: docker.yml
-    - import_tasks: gh.yml
     - import_tasks: firewall.yml
+    - import_tasks: gh.yml
     - import_tasks: bundler.yml
-    - import_tasks: kubernetes.yml
-    - import_tasks: terraform.yml
-    - import_tasks: doctl.yml
-    - import_tasks: aws.yml
     - import_tasks: javascript.yml
     - import_tasks: solidity.yml
+      #- import_tasks: docker.yml
+      #- import_tasks: kubernetes.yml
+      #- import_tasks: terraform.yml
+      #- import_tasks: doctl.yml
+      #- import_tasks: aws.yml
