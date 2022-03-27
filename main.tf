@@ -33,6 +33,7 @@ resource "digitalocean_droplet" "buildvm" {
   # size       = "s-4vcpu-8gb" # $40/month, $0.06/hour
   monitoring = true
   ssh_keys   = [digitalocean_ssh_key.buildvm.fingerprint]
+  tags       = []
 }
 
 output "droplet_ip" {
