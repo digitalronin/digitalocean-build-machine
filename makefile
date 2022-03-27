@@ -1,4 +1,4 @@
-TERRAFORM := terraform-0.14.5
+TERRAFORM := terraform
 SSH_KEY := ~/.ssh/digitalocean_buildvm
 SCP_OPTIONS := -i $(SSH_KEY) -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 SSH_OPTIONS := -A $(SCP_OPTIONS)
