@@ -10,7 +10,7 @@ SSH_OPTIONS := -A $(SCP_OPTIONS)
 buildvm:
 	. .env; make init; make apply; sleep 180; ./ansible.sh
 
-foo:
+list-do-images:
 	curl -X GET \
 		-H "Content-Type: application/json" \
 		-H "Authorization: Bearer $${TF_VAR_do_token}" \
