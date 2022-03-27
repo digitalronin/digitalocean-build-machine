@@ -38,3 +38,4 @@ Paste PAC and choose SSH protocol
 
 - Add brownie for solidity development
 - Add a list of projects, along with code to clone them and install any required dependencies (e.g. yarn/npm packages). The initialisation code should be in the actual projects, as `make setup` or something.
+- Create a DNS entry for the buildvm, so that I can add browser bookmarks to projects running on it
