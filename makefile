@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 TERRAFORM := terraform
 SSH_KEY := ~/.ssh/digitalocean_buildvm
 SCP_OPTIONS := -i $(SSH_KEY) -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
@@ -8,7 +9,7 @@ SSH_OPTIONS := -A $(SCP_OPTIONS)
 # "E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 2308 (apt-get)", "E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?"
 # ```
 buildvm:
-	bash -c ". .env; make init; make apply; sleep 60; ./ansible.sh"
+	. .env; make init; make apply; sleep 60; ./ansible.sh
 
 list-do-images:
 	curl -X GET \
@@ -23,13 +24,13 @@ plan:
 	$(TERRAFORM) plan
 
 apply:
-	bash -c ". .env; $(TERRAFORM) apply -auto-approve"
+	. .env; $(TERRAFORM) apply -auto-approve
 
 fmt:
 	$(TERRAFORM) fmt -recursive
 
 destroy:
-	bash -c ". .env; $(TERRAFORM) destroy"
+	. .env; $(TERRAFORM) destroy
 
 ssh-root:
 	ssh $(SSH_OPTIONS) root@$$(cat .ip)
