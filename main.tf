@@ -40,6 +40,10 @@ output "droplet_ip" {
   value = digitalocean_droplet.buildvm.ipv4_address
 }
 
+output "url" {
+  value = "http://${digitalocean_droplet.buildvm.ipv4_address}:3000"
+}
+
 resource "local_file" "ip-address" {
   content  = digitalocean_droplet.buildvm.ipv4_address
   filename = "${path.module}/.ip"
