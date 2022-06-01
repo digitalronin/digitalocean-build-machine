@@ -23,7 +23,7 @@ not fully idempotent. Don't try and use it to maintain a long-lived VM.
 
 ### Start working on the VM
 
-* `make ssh-david`
+* `make ssh`
 * `tmux`
 
 Now you should be able to checkout git repos and build docker images.
