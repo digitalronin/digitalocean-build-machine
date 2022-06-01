@@ -18,10 +18,10 @@ list-do-images:
 		"https://api.digitalocean.com/v2/images" | jq
 
 init:
-	$(TERRAFORM) init
+	. .env; $(TERRAFORM) init
 
 plan:
-	$(TERRAFORM) plan
+	. .env; $(TERRAFORM) plan
 
 apply:
 	. .env; $(TERRAFORM) apply -auto-approve
