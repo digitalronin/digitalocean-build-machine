@@ -8,7 +8,6 @@
     update_cache: yes
     pkg:
     - nodejs
-    - npm
 
 - name: Install some useful npm packages
   npm:
