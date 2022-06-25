@@ -11,6 +11,6 @@
 
   - name: Authenticate to github.com
     shell:
-      cmd: echo {{ token }} | gh auth login --with-token
+      cmd: echo {{ token }} | gh auth login --hostname github.com --with-token
       warn: no
   when: gh_installed.stdout != ""
