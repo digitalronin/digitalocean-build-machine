@@ -5,16 +5,18 @@ not fully idempotent. Don't try and use it to maintain a long-lived VM.
 
 ## Pre-requisites
 
-* Terraform 0.14.5
-* Ansible 2.10.5
-* ssh-agent <-- to not have to push ssh keys to the VM
+* Terraform >= 0.14.5
+* Ansible >= 2.10.5
+* ssh-agent <-- in order not to have to push ssh keys to the VM
 * github PAC <-- to use `gh`
 * DigitalOcean account
+* Namecheap Dynamic DNS host record <-- to always use the same DNS entry for the new VM
 
 ## To use:
 
 * Create an API key on DigitalOcean
 * Create a PAC on GitHub
+* Create a Dynamic DNS entry on Namecheap
 * export them as per dot.env.example
 * Set user information in `ansible-playbooks/vars/default.yml`
 * Edit `main.tf` to set the size of VM to create
@@ -28,8 +30,6 @@ not fully idempotent. Don't try and use it to maintain a long-lived VM.
 
 Now you should be able to checkout git repos and build docker images.
 
-Paste PAC and choose SSH protocol
-
 ## Cleanup
 
 > Remember to `make destroy` when finished.
@@ -38,4 +38,3 @@ Paste PAC and choose SSH protocol
 
 - Add brownie for solidity development
 - Add a list of projects, along with code to clone them and install any required dependencies (e.g. yarn/npm packages). The initialisation code should be in the actual projects, as `make setup` or something.
-- Create a DNS entry for the buildvm, so that I can add browser bookmarks to projects running on it
