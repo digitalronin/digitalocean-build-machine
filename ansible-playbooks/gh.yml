@@ -5,13 +5,12 @@
 
 - block:
   - name: Add gh repo apt key
-    apt_key:
-      keyserver: keyserver.ubuntu.com
-      id: C99B11DEB97541F0
+    shell:
+      curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-ke
 
   - name: Add gh apt repository
     apt_repository:
-      repo: deb https://cli.github.com/packages focal main
+      repo: "deb [signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages focal main"
       state: present
 
   - name: Update apt
