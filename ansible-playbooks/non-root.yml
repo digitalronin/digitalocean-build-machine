@@ -5,9 +5,9 @@
     - vars/default.yml
 
   tasks:
-    - import_tasks: gh-configure.yml
     - import_tasks: github-hosts-key.yml
+    - import_tasks: gh-configure.yml
     - import_tasks: neovim-configure.yml
     - import_tasks: dotfiles.yml
     - import_tasks: bin-scripts.yml
-    - import_tasks: doctl-configure.yml
+    # - import_tasks: doctl-configure.yml
