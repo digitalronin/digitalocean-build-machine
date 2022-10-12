@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+source .env
+
 ansible-playbook -u root \
   -i "${ip}," \
   --private-key ${private_key_file} \
