@@ -5,9 +5,9 @@ not fully idempotent. Don't try and use it to maintain a long-lived VM.
 
 ## Pre-requisites
 
+* ssh-agent <-- in order not to have to push ssh keys to the VM  # see ~/INIT-SSH.sh
 * Terraform >= 0.14.5
 * Ansible >= 2.10.5
-* ssh-agent <-- in order not to have to push ssh keys to the VM
 * github PAC <-- to use `gh`
 * DigitalOcean account
 * Namecheap Dynamic DNS host record <-- to always use the same DNS entry for the new VM
@@ -20,7 +20,9 @@ not fully idempotent. Don't try and use it to maintain a long-lived VM.
 * export them as per dot.env.example
 * Set user information in `ansible-playbooks/vars/default.yml`
 * Edit `main.tf` to set the size of VM to create
-* Customise the software to install in `ansible-playbooks/playbook.yml`
+* Customise the software to install in
+  - `ansible-playbooks/playbook.yml`
+  - `ansible-playbooks/non-root.yml`
 * `make buildvm`
 
 ### Start working on the VM
